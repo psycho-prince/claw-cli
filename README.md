@@ -26,6 +26,38 @@ The purpose of this project is to provide a highly controlled, auditable, and ex
 
 This project is in an early alpha stage. The core architecture is in place, but features are limited as the primary focus is on establishing a secure and reliable foundation. Expect breaking changes in future releases.
 
+### Getting Started
+
+The CLI agent, in its current committed state, **will not work directly** after cloning the repository.
+
+This is because the `node_modules` directory (containing project dependencies) and the `dist` directory (containing the compiled JavaScript code) were explicitly excluded from the commit as per the strict safety rules: "YOU MUST NEVER: Stage node_modules or any dependency directory".
+
+To make the CLI agent runnable after cloning the repository, a user will need to perform the following steps:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/psycho-prince/claw-cli.git
+    cd claw-cli/openclaw
+    ```
+2.  **Navigate into the `agent-cli` directory:**
+    ```bash
+    cd agent-cli
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+4.  **Build the project:**
+    ```bash
+    npm run build
+    ```
+5.  **Run the agent:**
+    ```bash
+    node dist/index.js do "your task string here"
+    ```
+
+If you wish for the `node_modules` and `dist` directories to be included in the repository so that the agent works "out of the box", you must explicitly instruct me to stage and commit these directories, which would override the current "YOU MUST NEVER" rule.
+
 ### Further Reading
 
 For detailed architecture, security rationale, and CLI usage examples, see [`CLI_AGENT_README.md`](./CLI_AGENT_README.md).
