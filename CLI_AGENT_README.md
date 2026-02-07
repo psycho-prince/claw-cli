@@ -10,6 +10,8 @@ The agent's operation follows a strict, five-stage loop to ensure security and p
 2.  **Plan:** A Large Language Model (LLM) planner (e.g., Gemini CLI) receives the task and decomposes it into a structured series of discrete, low-level actions. This plan is returned as a JSON object adhering to the Intent Schema.
 3.  **Policy:** The agent's security policy engine intercepts the plan. Each proposed action is rigorously validated against a set of allow-listed, predefined capabilities and the Intent Schema. If any action is not recognized or violates the policy, the entire plan is rejected before execution.
 4.  **Execute:** If the plan is approved, the executor module runs each action one by one. **Execution is sandboxed, auditable, and requires explicit user confirmation for sensitive actions (e.g., sending messages).** The executor operates with minimal privileges and controls a browser session (Web Bridge).
+
+    **Execution is sandboxed and read-only by design.**
 5.  **Audit:** The outcome of the execution, along with the original task and plan, is logged to ensure traceability and transparency.
 
 ## Architecture Overview
