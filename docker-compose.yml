@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  claw-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      # Add environment variables here that ClawCloud would use, e.g.:
+      # CLAW_CLOUD_ENABLED: "true"
+      # JWT_SECRET: "your_jwt_secret"
+      # STRIPE_SECRET_KEY: "your_stripe_secret_key"
+    ports:
+      - "3000:3000" # Only needed if server mode is enabled and listening
+    volumes:
+      - ./data:/app/data # For SQLite DB, logs, session data etc.
+    command: ["node", "dist/index.js", "--server"] # Example: Run in server mode
+    restart: unless-stopped

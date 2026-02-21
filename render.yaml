@@ -1,0 +1,24 @@
+# This file is for Render.com deployment.
+# It assumes a Dockerfile exists in the root of the repository.
+
+services:
+  - type: web
+    name: claw-cli
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: starter # You can change this to 'standard' or 'pro' as needed
+    ports:
+      - 3000
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Example environment variables for ClawCloud deployment.
+      # These would be set in Render's dashboard for security.
+      # - key: CLAW_CLOUD_ENABLED
+      #   value: "true"
+      # - key: JWT_SECRET
+      #   generateValue: true # Render can generate a secure secret
+      # - key: STRIPE_SECRET_KEY
+      #   sync: false # Do not sync with repo, set securely in Render
+      # - key: DATABASE_URL
+      #   value: "sqlite://./data/clawcloud.db" # Example for SQLite
