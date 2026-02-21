@@ -85,4 +85,4 @@ Starting at **₹499/month** for individuals, up to **₹1999/month** for enterp
 *   **v1.2.0:** Improved LLM integration patterns, custom policy definitions.
 *   **v2.0.0:** First release of ClawCloud managed service with full feature parity + team features.
 
-Join the ClawCloud waitlist today: `https://clawcloud.dev/waitlist`
+Join the waitlist here: Sign up for ClawCloud Beta
