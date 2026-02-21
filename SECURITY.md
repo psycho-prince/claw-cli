@@ -27,18 +27,29 @@ This is **not a general-purpose shell agent**. It is a task-specific executor th
 
 To maintain a clear security boundary, `claw-cli-agent` is **NOT** designed for:
 
-*   **Multi-User Environments:** It is built for a single, trusted user on their local machine.
-*   **Server-Side Automation:** Deployment on production servers without significant additional hardening is strongly discouraged.
 *   **Arbitrary Shell Execution:** The agent is fundamentally incapable of executing raw shell commands.
 *   **Self-Modification:** The agent cannot alter its own security policies or source code.
+
+## Cloud Security Mitigations (for ClawCloud SaaS)
+
+For the ClawCloud managed service, additional layers of security are implemented:
+
+*   **Rate Limiting:** All API endpoints are protected by rate limiting to prevent abuse and denial-of-service attacks.
+*   **Security Headers (Helmet):** Standard security headers are enforced to mitigate common web vulnerabilities like XSS, clickjacking, and others.
+*   **Input Sanitization & Validation:** All user inputs to the ClawCloud API are rigorously sanitized and validated using strong schemas (`zod`).
+*   **Authentication (JWT):** User access to protected endpoints is secured using JSON Web Tokens.
+*   **Multi-Tenancy Isolation:** Agent execution for each user is designed to be isolated, preventing cross-tenant data access or interference. (Detailed implementation in `server/`).
+*   **Data Encryption:** Sensitive data at rest (e.g., user database) and in transit (HTTPS) is encrypted.
+*   **Auditable Logging:** Comprehensive logs are maintained for all server actions, agent executions, and security events.
 
 ## Safe Usage Assumptions
 
 The security model of `claw-cli-agent` relies on the following assumptions:
 
-*   **Trusted User:** The user operating the CLI is trusted.
+*   **Trusted User (Local CLI):** The user operating the local CLI is trusted.
 *   **Secure Host:** The machine running the agent is not already compromised.
 *   **Policy Review:** The user is expected to understand the capabilities defined in the policy files. This is the definitive source of truth for what the agent can and cannot do.
+*   **ClawCloud Users:** ClawCloud users are authenticated and operate within their defined quotas and access policies.
 
 If you discover a security vulnerability, please report it responsibly by opening a security advisory on the GitHub repository.
 
