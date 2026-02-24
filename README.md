@@ -2,16 +2,50 @@
 
 OpenClaw got hacked? Meet Claw-CLI — the security-first agent that actually protects you.
 
-## 🚀 One-Command Install
+## 🚀 Installation (v1.1.0)
 
+### 1. Standard Install (macOS, Linux, Windows)
+
+Install Node.js v18+ and then run:
 ```bash
-npm install -g claw-cli # Coming soon!
+npm install -g claw-cli
+```
+The `postinstall` script will automatically download the necessary Playwright browsers.
+
+### 2. Android Termux Guide
+
+Termux requires a few extra steps:
+```bash
+# 1. Install dependencies
+pkg install nodejs-lts git
+
+# 2. Install claw-cli globally
+npm install -g claw-cli
+
+# 3. Manually install Playwright browsers (postinstall might fail)
+npx playwright install --with-deps
 ```
 
-**For Android Termux users:**
+### 3. Quick Start
+
+After installation, run the doctor to check your setup:
 ```bash
-# TODO: Add specific Termux installation instructions here.
-# Likely involves node.js setup, global npm install, and potentially Playwright browser dependencies.
+claw doctor
+```
+
+Initialize your config file:
+```bash
+claw init
+```
+
+See available commands:
+```bash
+claw --help
+```
+
+Start the server (for web UI or remote access):
+```bash
+claw --server
 ```
 
 ## ✨ Features
@@ -80,8 +114,8 @@ Starting at **₹499/month** for individuals, up to **₹1999/month** for enterp
 
 ## 🗺️ Roadmap (v1.0.0 and beyond)
 
-*   **v1.0.0 (Current Release):** Production-ready, secure local CLI. Foundation for ClawCloud.
-*   **v1.1.0:** Enhanced web automation capabilities, more browser actions.
+*   **v1.1.0 (Current Release):** npm-ready, `claw doctor` + `claw init`, Termux support.
+*   **v1.0.0:** Production-ready, secure local CLI. Foundation for ClawCloud.
 *   **v1.2.0:** Improved LLM integration patterns, custom policy definitions.
 *   **v2.0.0:** First release of ClawCloud managed service with full feature parity + team features.
 
