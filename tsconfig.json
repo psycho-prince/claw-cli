@@ -2,16 +2,16 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "../dist", // Output to dist/ in the parent directory
-    "rootDir": "./",     // Compile from current directory (agent-cli)
+    "outDir": "./dist",
+    "rootDir": "./src",
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["src/**/*.ts", "../server/**/*.ts"], // Include server files from parent directory
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }
