@@ -1,0 +1,10 @@
+node_modules
+dist/*.map
+.env*
+*.log
+.github
+SECURITY.md
+CLAWCLOUD.md
+render.yaml
+docker-compose.yml
+Dockerfile
