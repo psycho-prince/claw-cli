@@ -1,9 +1,11 @@
-
 import chalk from 'chalk';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
+
+// This file contains the logic for the `claw doctor` command.
+// It checks for common issues in the user's environment.
 
 async function checkNodeVersion() {
     const version = process.versions.node;
@@ -55,11 +57,9 @@ export async function runDoctor() {
     });
 
     if (allGood) {
-        console.log(chalk.bold.green('
-All checks passed! Claw-CLI is ready to go.'));
+        console.log(chalk.bold.green('\nAll checks passed! Claw-CLI is ready to go.'));
     } else {
-        console.log(chalk.bold.yellow('
-Please fix the issues above to ensure Claw-CLI works correctly.'));
+        console.log(chalk.bold.yellow('\nPlease fix the issues above to ensure Claw-CLI works correctly.'));
         process.exit(1);
     }
 }
